@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd42cade-ef5f-4262-9300-60982409b0e2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packet_Sniffer.py" beforeDir="false" afterPath="$PROJECT_DIR$/Packet_Sniffer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,5 +54,11 @@
       <updated>1579188747437</updated>
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="140" y="95" key="com.intellij.ide.util.TipDialog" timestamp="1579194209263">
+      <screen x="0" y="31" width="960" height="469" />
+    </state>
+    <state x="140" y="95" key="com.intellij.ide.util.TipDialog/0.31.960.469@0.31.960.469" timestamp="1579194209263" />
   </component>
 </project>

