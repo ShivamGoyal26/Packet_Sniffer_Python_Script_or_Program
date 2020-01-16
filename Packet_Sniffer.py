@@ -16,5 +16,7 @@ def process_sniffed_packet(packet):
                 if keyword in load:
                     print(load)
                     break
-                    
+
 sniff("eth0")
+
+#here we succesfully accqiure the user passwords and the username now we want also the url of the users so let's see how we can see the url of the user 
