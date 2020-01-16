@@ -29,6 +29,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Network_Scanner" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -56,6 +57,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="0" y="31" width="434" height="472" key="FileChooserDialogImpl" timestamp="1579199063324">
+      <screen x="0" y="31" width="960" height="469" />
+    </state>
+    <state x="0" y="31" width="434" height="472" key="FileChooserDialogImpl/0.31.960.469@0.31.960.469" timestamp="1579199063324" />
     <state x="140" y="95" key="com.intellij.ide.util.TipDialog" timestamp="1579194209263">
       <screen x="0" y="31" width="960" height="469" />
     </state>

